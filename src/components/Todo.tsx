@@ -31,6 +31,7 @@ const Todo = () => {
     const [editedText, setEditedTodo] = useState<string>("")
 
     const inputRef = useRef<HTMLInputElement>(null)
+
     const add = () => {
 
         const inputText = inputRef.current?.value.trim()
@@ -56,6 +57,8 @@ const Todo = () => {
         setBtn(true)
     }
 
+  
+
     const deleteTodo = (id: Date) => {
         return setTodoList((prevTodo) => prevTodo.filter((todo) => todo.id !== id));
     };
@@ -73,7 +76,9 @@ const Todo = () => {
 
     const editTodo = (todo: Todo) => {
         setEditedTodo(todo.text||"");
+        deleteTodo(todo.id)
         setBtn(false)
+  
     }
 
 
